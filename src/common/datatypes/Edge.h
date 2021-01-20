@@ -17,9 +17,9 @@ namespace nebula {
 struct Edge {
     Value src;
     Value dst;
-    EdgeType type;
+    Value type;
     std::string name;
-    EdgeRanking ranking;
+    Value ranking;
     std::unordered_map<std::string, Value> props;
 
     Edge() {}
@@ -39,9 +39,9 @@ struct Edge {
         , props(v.props) {}
     Edge(Value s,
          Value d,
-         EdgeType t,
+         Value t,
          std::string n,
-         EdgeRanking r,
+         Value r,
          std::unordered_map<std::string, Value>&& p)
         : src(std::move(s))
         , dst(std::move(d))

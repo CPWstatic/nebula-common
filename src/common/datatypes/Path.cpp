@@ -61,11 +61,11 @@ bool Path::hasDuplicateEdges() const {
     for (const auto& step : steps) {
         auto edgeSrc = step.type > 0 ? srcVid : step.dst.vid;
         auto edgeDst = step.type > 0 ? step.dst.vid : srcVid;
-        auto edgeKey = folly::stringPrintf("%s%s%s%ld",
+        auto edgeKey = folly::stringPrintf("%s%s%s%s",
                                            edgeSrc.toString().c_str(),
                                            edgeDst.toString().c_str(),
                                            step.name.c_str(),
-                                           step.ranking);
+                                           step.ranking.toString().c_str());
         auto res = uniqueSet.emplace(std::move(edgeKey));
         if (!res.second) {
             return true;
